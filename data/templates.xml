@@ -40,8 +40,8 @@
         <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "update", "use_external_ids": true}]]></field>
     </record>
 
-    <!-- 2. Products  (base — product is part of core) -->
-    <record id="template_products" model="migrate.template">
+    <!-- 2. Products  (requires: product) -->
+    <record id="template_products" model="migrate.template" forcecreate="0">
         <field name="name">Products</field>
         <field name="sequence">20</field>
         <field name="category">initial_setup</field>
@@ -68,7 +68,7 @@
     </record>
 
     <!-- 3. Chart of Accounts  (requires: account) -->
-    <record id="template_chart_of_accounts" model="migrate.template">
+    <record id="template_chart_of_accounts" model="migrate.template" forcecreate="0">
         <field name="name">Chart of Accounts</field>
         <field name="sequence">30</field>
         <field name="category">accounting</field>
@@ -88,7 +88,7 @@
     </record>
 
     <!-- 4. Journal Entries  (requires: account) -->
-    <record id="template_journal_entries" model="migrate.template">
+    <record id="template_journal_entries" model="migrate.template" forcecreate="0">
         <field name="name">Journal Entries</field>
         <field name="sequence">40</field>
         <field name="category">accounting</field>
@@ -109,7 +109,7 @@
     </record>
 
     <!-- 5. Sale Orders  (requires: sale) -->
-    <record id="template_sale_orders" model="migrate.template">
+    <record id="template_sale_orders" model="migrate.template" forcecreate="0">
         <field name="name">Sale Orders</field>
         <field name="sequence">50</field>
         <field name="category">erp_migration</field>
@@ -131,7 +131,7 @@
     </record>
 
     <!-- 6. Purchase Orders  (requires: purchase) -->
-    <record id="template_purchase_orders" model="migrate.template">
+    <record id="template_purchase_orders" model="migrate.template" forcecreate="0">
         <field name="name">Purchase Orders</field>
         <field name="sequence">60</field>
         <field name="category">erp_migration</field>
@@ -152,7 +152,7 @@
     </record>
 
     <!-- 7. Employees  (requires: hr) -->
-    <record id="template_employees" model="migrate.template">
+    <record id="template_employees" model="migrate.template" forcecreate="0">
         <field name="name">Employees</field>
         <field name="sequence">70</field>
         <field name="category">hr</field>
@@ -176,7 +176,7 @@
     </record>
 
     <!-- 8. Inventory Adjustments  (requires: stock) -->
-    <record id="template_inventory_adjustments" model="migrate.template">
+    <record id="template_inventory_adjustments" model="migrate.template" forcecreate="0">
         <field name="name">Inventory Adjustments</field>
         <field name="sequence">80</field>
         <field name="category">inventory</field>
@@ -195,7 +195,7 @@
     </record>
 
     <!-- 9. Price List Items  (requires: product — core module) -->
-    <record id="template_pricelist_items" model="migrate.template">
+    <record id="template_pricelist_items" model="migrate.template" forcecreate="0">
         <field name="name">Price List Items</field>
         <field name="sequence">90</field>
         <field name="category">bulk_update</field>
@@ -217,7 +217,7 @@
     </record>
 
     <!-- 10. Bank Statement Lines  (requires: account) -->
-    <record id="template_bank_statement_lines" model="migrate.template">
+    <record id="template_bank_statement_lines" model="migrate.template" forcecreate="0">
         <field name="name">Bank Statement Lines</field>
         <field name="sequence">100</field>
         <field name="category">accounting</field>
