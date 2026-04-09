@@ -1,0 +1,1198 @@
+# Polish translation for navigare_migrate
+# Copyright (C) 2026, Navigare Space Ltd
+# This file is distributed under the same license as the navigare_migrate package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: navigare_migrate 19.0.1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-10 00:00+0000\n"
+"PO-Revision-Date: 2026-04-10 00:00+0000\n"
+"Last-Translator: Navigare Space Ltd\n"
+"Language-Team: Polish\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_profile
+msgid "Migration Profile"
+msgstr "Profil migracji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__name
+msgid "Profile Name"
+msgstr "Nazwa profilu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__direction
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__direction
+msgid "Direction"
+msgstr "Kierunek"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__direction,import
+msgid "Import"
+msgstr "Import"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__direction,export
+msgid "Export"
+msgstr "Eksport"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__file_format
+msgid "File Format"
+msgstr "Format pliku"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__file_format,csv
+msgid "CSV"
+msgstr "CSV"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__file_format,xlsx
+msgid "Excel (.xlsx)"
+msgstr "Excel (.xlsx)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__file_format,xml
+msgid "XML"
+msgstr "XML"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__file_format,json
+msgid "JSON"
+msgstr "JSON"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__file_format,fixed
+msgid "Fixed-Width Columns"
+msgstr "Kolumny o stałej szerokości"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__file_format,ods
+msgid "LibreOffice Calc (.ods)"
+msgstr "LibreOffice Calc (.ods)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__file_format,sqlite
+msgid "SQLite Database"
+msgstr "Baza danych SQLite"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__target_model_id
+msgid "Target Model"
+msgstr "Model docelowy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__csv_delimiter
+msgid "CSV Delimiter"
+msgstr "Separator CSV"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_delimiter,comma
+msgid "Comma (,)"
+msgstr "Przecinek (,)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_delimiter,semicolon
+msgid "Semicolon (;)"
+msgstr "Średnik (;)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_delimiter,tab
+msgid "Tab"
+msgstr "Tabulator"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_delimiter,pipe
+msgid "Pipe (|)"
+msgstr "Kreska pionowa (|)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__csv_encoding
+msgid "CSV Encoding"
+msgstr "Kodowanie CSV"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_encoding,utf-8
+msgid "UTF-8"
+msgstr "UTF-8"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_encoding,utf-8-sig
+msgid "UTF-8 with BOM"
+msgstr "UTF-8 z BOM"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_encoding,cp1250
+msgid "Windows-1250 (Central Europe)"
+msgstr "Windows-1250 (Europa Środkowa)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_encoding,cp1252
+msgid "Windows-1252 (Western)"
+msgstr "Windows-1252 (Europa Zachodnia)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_encoding,iso-8859-1
+msgid "ISO-8859-1 (Latin-1)"
+msgstr "ISO-8859-1 (Latin-1)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__csv_encoding,iso-8859-2
+msgid "ISO-8859-2 (Latin-2)"
+msgstr "ISO-8859-2 (Latin-2)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__csv_quotechar
+msgid "Quote Character"
+msgstr "Znak cudzysłowu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__csv_header
+msgid "First Row is Header"
+msgstr "Pierwszy wiersz to nagłówek"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__sheet_name
+msgid "Sheet Name"
+msgstr "Nazwa arkusza"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__header_row
+msgid "Header Row Number"
+msgstr "Numer wiersza nagłówka"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__data_start_row
+msgid "Data Start Row"
+msgstr "Wiersz początkowy danych"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__xml_root_element
+msgid "Root Element"
+msgstr "Element główny"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__xml_record_element
+msgid "Record Element"
+msgstr "Element rekordu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__xml_use_attributes
+msgid "Map to XML Attributes"
+msgstr "Mapuj na atrybuty XML"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__json_root_path
+msgid "JSON Root Path"
+msgstr "Ścieżka główna JSON"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__json_flatten
+msgid "Flatten Nested Objects"
+msgstr "Spłaszcz zagnieżdżone obiekty"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__fixed_columns_def
+msgid "Column Definitions (JSON)"
+msgstr "Definicje kolumn (JSON)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__sqlite_table
+msgid "SQLite Table Name"
+msgstr "Nazwa tabeli SQLite"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__on_existing
+msgid "On Existing Record"
+msgstr "Przy istniejącym rekordzie"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__on_existing,skip
+msgid "Skip Existing Records"
+msgstr "Pomiń istniejące rekordy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__on_existing,update
+msgid "Update Existing Records"
+msgstr "Aktualizuj istniejące rekordy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_profile__on_existing,error
+msgid "Raise Error on Duplicates"
+msgstr "Zgłoś błąd przy duplikatach"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__match_field_ids
+msgid "Match Fields"
+msgstr "Pola dopasowania"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__batch_size
+msgid "Batch Size"
+msgstr "Rozmiar partii"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__use_external_ids
+msgid "Use External IDs"
+msgstr "Używaj zewnętrznych identyfikatorów"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__external_id_prefix
+msgid "External ID Prefix"
+msgstr "Prefiks zewnętrznego ID"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__mapping_ids
+msgid "Field Mappings"
+msgstr "Mapowanie pól"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__operation_ids
+msgid "Execution History"
+msgstr "Historia wykonań"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__schedule_ids
+msgid "Schedules"
+msgstr "Harmonogramy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__template_id
+msgid "Created from Template"
+msgstr "Utworzono z szablonu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__operations_count
+msgid "Operations Count"
+msgstr "Liczba operacji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__last_operation_date
+msgid "Last Operation Date"
+msgstr "Data ostatniej operacji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_profile__notes
+msgid "Notes"
+msgstr "Notatki"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_profile_run_import
+msgid "Run Import"
+msgstr "Uruchom import"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_profile_run_export
+msgid "Run Export"
+msgstr "Uruchom eksport"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_profile_auto_map
+msgid "Auto-Map Fields"
+msgstr "Automatyczne mapowanie pól"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_profile_operations
+msgid "Operations"
+msgstr "Operacje"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_field_mapping
+msgid "Field Mapping Line"
+msgstr "Wiersz mapowania pól"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__source_column
+msgid "Source Column / Path"
+msgstr "Kolumna / ścieżka źródłowa"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__source_index
+msgid "Source Column Index"
+msgstr "Indeks kolumny źródłowej"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__target_field_id
+msgid "Target Field"
+msgstr "Pole docelowe"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__relation_match_field
+msgid "Relation Match Field"
+msgstr "Pole dopasowania relacji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__transformation
+msgid "Transformation"
+msgstr "Transformacja"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,none
+msgid "No Transformation"
+msgstr "Bez transformacji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,cast
+msgid "Type Cast"
+msgstr "Rzutowanie typu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,value_map
+msgid "Value Mapping"
+msgstr "Mapowanie wartości"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,python
+msgid "Python Expression"
+msgstr "Wyrażenie Python"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,default
+msgid "Default Value"
+msgstr "Wartość domyślna"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,date_format
+msgid "Date Format Conversion"
+msgstr "Konwersja formatu daty"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,truncate
+msgid "Truncate"
+msgstr "Obetnij"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,regex
+msgid "Regex Extract"
+msgstr "Ekstrakcja wyrażeniem regularnym"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__transformation,concat
+msgid "Concatenate Fields"
+msgstr "Połącz pola"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__cast_to
+msgid "Cast To"
+msgstr "Rzutuj na"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__cast_to,text
+msgid "Text"
+msgstr "Tekst"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__cast_to,integer
+msgid "Integer"
+msgstr "Liczba całkowita"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__cast_to,float
+msgid "Float"
+msgstr "Liczba zmiennoprzecinkowa"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__cast_to,boolean
+msgid "Boolean"
+msgstr "Wartość logiczna"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__cast_to,date
+msgid "Date"
+msgstr "Data"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_field_mapping__cast_to,datetime
+msgid "Datetime"
+msgstr "Data i czas"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__value_map_id
+msgid "Value Map"
+msgstr "Mapa wartości"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__python_expr
+msgid "Python Expression"
+msgstr "Wyrażenie Python"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__default_value
+msgid "Default Value"
+msgstr "Wartość domyślna"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__source_date_format
+msgid "Source Date Format"
+msgstr "Format daty źródłowej"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__max_length
+msgid "Max Length"
+msgstr "Maksymalna długość"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__regex_pattern
+msgid "Regex Pattern"
+msgstr "Wzorzec wyrażenia regularnego"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__concat_sources
+msgid "Concatenate Sources"
+msgstr "Połącz źródła"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__separator
+msgid "Separator"
+msgstr "Separator"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__required
+msgid "Required"
+msgstr "Wymagane"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__unique
+msgid "Unique"
+msgstr "Unikalny"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__validation_regex
+msgid "Validation Regex"
+msgstr "Wyrażenie regularne walidacji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__export_label
+msgid "Export Column Label"
+msgstr "Etykieta kolumny eksportu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_field_mapping__export_format
+msgid "Export Format"
+msgstr "Format eksportu"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_operation
+msgid "Migration Operation"
+msgstr "Operacja migracji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__name
+msgid "Reference"
+msgstr "Referencja"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__profile_id
+msgid "Profile"
+msgstr "Profil"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__state
+msgid "Status"
+msgstr "Status"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,draft
+msgid "Draft"
+msgstr "Wersja robocza"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,validating
+msgid "Validating"
+msgstr "Walidacja"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,running
+msgid "Running"
+msgstr "W toku"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,done
+msgid "Completed"
+msgstr "Zakończono"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,partial
+msgid "Partial (with errors)"
+msgstr "Częściowo (z błędami)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,failed
+msgid "Failed"
+msgstr "Niepowodzenie"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,cancelled
+msgid "Cancelled"
+msgstr "Anulowano"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_operation__state,dry_run
+msgid "Dry Run Complete"
+msgstr "Próba testowa zakończona"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__source_file
+msgid "Source File"
+msgstr "Plik źródłowy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__result_file
+msgid "Result/Export File"
+msgstr "Plik wynikowy / eksportu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__error_file
+msgid "Error Rows File"
+msgstr "Plik wierszy z błędami"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__total_rows
+msgid "Total Rows"
+msgstr "Łączna liczba wierszy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__processed
+msgid "Processed"
+msgstr "Przetworzono"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__created
+msgid "Created"
+msgstr "Utworzono"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__updated
+msgid "Updated"
+msgstr "Zaktualizowano"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__skipped
+msgid "Skipped"
+msgstr "Pominięto"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__errors
+msgid "Errors"
+msgstr "Błędy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__progress
+msgid "Progress %"
+msgstr "Postęp %"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__date_start
+msgid "Started"
+msgstr "Rozpoczęto"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__date_end
+msgid "Finished"
+msgstr "Zakończono"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__duration
+msgid "Duration (sec)"
+msgstr "Czas trwania (s)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__dry_run
+msgid "Dry Run"
+msgstr "Próba testowa"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__line_ids
+msgid "Row Details"
+msgstr "Szczegóły wierszy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__can_rollback
+msgid "Can Rollback"
+msgstr "Możliwość cofnięcia"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__rolled_back
+msgid "Rolled Back"
+msgstr "Cofnięto"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__user_id
+msgid "Executed By"
+msgstr "Wykonano przez"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation__log
+msgid "Execution Log"
+msgstr "Dziennik wykonania"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_operation_rollback
+msgid "Rollback"
+msgstr "Cofnij zmiany"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_operation_retry
+msgid "Retry Errors"
+msgstr "Ponów błędy"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_operation_download_errors
+msgid "Download Errors"
+msgstr "Pobierz błędy"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_operation_line
+msgid "Migration Operation Line"
+msgstr "Wiersz operacji migracji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation_line__row_number
+msgid "Row #"
+msgstr "Wiersz nr"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation_line__result
+msgid "Result"
+msgstr "Wynik"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation_line__created_id
+msgid "Created Record ID"
+msgstr "ID utworzonego rekordu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation_line__record_ref
+msgid "Record Reference"
+msgstr "Referencja rekordu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation_line__error_message
+msgid "Error Message"
+msgstr "Komunikat błędu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_operation_line__source_data
+msgid "Source Row Data (JSON)"
+msgstr "Dane wiersza źródłowego (JSON)"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_schedule
+msgid "Scheduled Migration"
+msgstr "Zaplanowana migracja"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__name
+msgid "Schedule Name"
+msgstr "Nazwa harmonogramu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__source_type
+msgid "Source Type"
+msgstr "Typ źródła"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__source_type,local
+msgid "Local File Path"
+msgstr "Lokalna ścieżka pliku"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__source_type,attachment
+msgid "Stored Attachment"
+msgstr "Zapisany załącznik"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__source_type,url
+msgid "Remote URL (HTTP/HTTPS)"
+msgstr "Zdalny URL (HTTP/HTTPS)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__source_type,sftp
+msgid "SFTP Server"
+msgstr "Serwer SFTP"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__source_path
+msgid "Source Path / URL"
+msgstr "Ścieżka / URL źródła"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__source_file
+msgid "Source File"
+msgstr "Plik źródłowy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__export_path
+msgid "Export Destination Path"
+msgstr "Ścieżka docelowa eksportu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__email_to
+msgid "Email Results To"
+msgstr "Wyślij wyniki na e-mail"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__repeat_every
+msgid "Repeat Every"
+msgstr "Powtarzaj co"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__repeat_unit,minutes
+msgid "Minutes"
+msgstr "Minuty"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__repeat_unit,hours
+msgid "Hours"
+msgstr "Godziny"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__repeat_unit,days
+msgid "Days"
+msgstr "Dni"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__repeat_unit,weeks
+msgid "Weeks"
+msgstr "Tygodnie"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__repeat_unit,months
+msgid "Months"
+msgstr "Miesiące"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__repeat_unit
+msgid "Interval"
+msgstr "Interwał"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__next_run
+msgid "Next Run"
+msgstr "Następne uruchomienie"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__last_run
+msgid "Last Run"
+msgstr "Ostatnie uruchomienie"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__last_run_status
+msgid "Last Run Status"
+msgstr "Status ostatniego uruchomienia"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__last_run_status,success
+msgid "Success"
+msgstr "Sukces"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_schedule__last_run_status,partial
+msgid "Partial"
+msgstr "Częściowo"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__max_retries
+msgid "Max Retries on Failure"
+msgstr "Maks. liczba ponownych prób"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__notify_on_error
+msgid "Notify on Error"
+msgstr "Powiadom o błędzie"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_schedule__notify_user_ids
+msgid "Notify Users"
+msgstr "Powiadom użytkowników"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_schedule_activate
+msgid "Activate"
+msgstr "Aktywuj"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_schedule_deactivate
+msgid "Deactivate"
+msgstr "Dezaktywuj"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_schedule_run_now
+msgid "Run Now"
+msgstr "Uruchom teraz"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_template
+msgid "Migration Template"
+msgstr "Szablon migracji"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__name
+msgid "Template Name"
+msgstr "Nazwa szablonu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__category
+msgid "Category"
+msgstr "Kategoria"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__category,erp
+msgid "ERP Migration"
+msgstr "Migracja ERP"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__category,sync
+msgid "Data Synchronization"
+msgstr "Synchronizacja danych"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__category,bulk
+msgid "Bulk Update"
+msgstr "Aktualizacja masowa"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__category,setup
+msgid "Initial Setup"
+msgstr "Konfiguracja początkowa"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__category,accounting
+msgid "Accounting"
+msgstr "Księgowość"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__category,inventory
+msgid "Inventory"
+msgstr "Magazyn"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__category,hr
+msgid "Human Resources"
+msgstr "Kadry i płace"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__description
+msgid "Description"
+msgstr "Opis"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__icon_class
+msgid "Icon CSS Class"
+msgstr "Klasa CSS ikony"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__direction,both
+msgid "Both"
+msgstr "Oba"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__recommended_format
+msgid "Recommended Format"
+msgstr "Zalecany format"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_template__recommended_format,any
+msgid "Any Format"
+msgstr "Dowolny format"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__mapping_config
+msgid "Mapping Configuration (JSON)"
+msgstr "Konfiguracja mapowania (JSON)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__profile_defaults
+msgid "Profile Defaults (JSON)"
+msgstr "Domyślne ustawienia profilu (JSON)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_template__sample_file
+msgid "Sample File"
+msgstr "Plik przykładowy"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_template_use
+msgid "Use Template"
+msgstr "Użyj szablonu"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_template_download_sample
+msgid "Download Sample"
+msgstr "Pobierz przykład"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_value_map
+msgid "Value Mapping Dictionary"
+msgstr "Słownik mapowania wartości"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_value_map__name
+msgid "Map Name"
+msgstr "Nazwa mapy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_value_map__line_ids
+msgid "Mappings"
+msgstr "Mapowania"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_value_map__default_value
+msgid "Default (when no match)"
+msgstr "Domyślna (gdy brak dopasowania)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_value_map__case_sensitive
+msgid "Case Sensitive"
+msgstr "Rozróżniaj wielkość liter"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_value_map_line
+msgid "Value Mapping Line"
+msgstr "Wiersz mapowania wartości"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_value_map_line__source_value
+msgid "Source Value"
+msgstr "Wartość źródłowa"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_value_map_line__target_value
+msgid "Target Value"
+msgstr "Wartość docelowa"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_dependency
+msgid "Model Import Dependency"
+msgstr "Zależność importu modelu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_dependency__model_id
+msgid "Model"
+msgstr "Model"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_dependency__depends_on_id
+msgid "Depends On"
+msgstr "Zależy od"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_dependency__priority
+msgid "Priority"
+msgstr "Priorytet"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_import_wizard
+msgid "Import Wizard"
+msgstr "Kreator importu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_import_wizard__create_profile
+msgid "Create New Profile"
+msgstr "Utwórz nowy profil"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_import_wizard__file
+msgid "File"
+msgstr "Plik"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_import_wizard__preview
+msgid "Preview"
+msgstr "Podgląd"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_import_wizard__detected_columns
+msgid "Detected Columns"
+msgstr "Wykryte kolumny"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_import_wizard__dry_run
+msgid "Dry Run (Preview Only)"
+msgstr "Próba testowa (tylko podgląd)"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_import_wizard__state,upload
+msgid "Upload File"
+msgstr "Wczytaj plik"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_import_wizard__state,preview
+msgid "Preview & Map"
+msgstr "Podgląd i mapowanie"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_import_wizard__state,running
+msgid "Running"
+msgstr "W toku"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_import_wizard__state,done
+msgid "Complete"
+msgstr "Zakończono"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_import_wizard_upload
+msgid "Upload & Preview"
+msgstr "Wczytaj i podgląd"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_import_wizard_automap
+msgid "Auto-Map"
+msgstr "Automatyczne mapowanie"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_import_wizard_run
+msgid "Run Import"
+msgstr "Uruchom import"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_import_wizard_open_operation
+msgid "Open Operation"
+msgstr "Otwórz operację"
+
+#. module: navigare_migrate
+#: model:ir.model,name:navigare_migrate.model_migrate_export_wizard
+msgid "Export Wizard"
+msgstr "Kreator eksportu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_export_wizard__model_id
+msgid "Source Model"
+msgstr "Model źródłowy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_export_wizard__filter_domain
+msgid "Filter Domain"
+msgstr "Domena filtra"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_export_wizard__date_from
+msgid "From Date"
+msgstr "Od daty"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_export_wizard__date_to
+msgid "To Date"
+msgstr "Do daty"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_export_wizard__max_records
+msgid "Max Records"
+msgstr "Maks. liczba rekordów"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_export_wizard__export_file
+msgid "Export File"
+msgstr "Plik eksportu"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,field_description:navigare_migrate.field_migrate_export_wizard__records_exported
+msgid "Records Exported"
+msgstr "Wyeksportowane rekordy"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_export_wizard__state,configure
+msgid "Configure"
+msgstr "Konfiguracja"
+
+#. module: navigare_migrate
+#: model:ir.model.fields,selection:navigare_migrate.field_migrate_export_wizard__state,download
+msgid "Download"
+msgstr "Pobierz"
+
+#. module: navigare_migrate
+#: model:ir.actions.act_window,name:navigare_migrate.action_migrate_export_wizard_run
+msgid "Run Export"
+msgstr "Uruchom eksport"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_root
+msgid "Navigare Migrate"
+msgstr "Navigare Migrate"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_dashboard
+msgid "Dashboard"
+msgstr "Pulpit"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_profiles
+msgid "Profiles"
+msgstr "Profile"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_operations
+msgid "Operations"
+msgstr "Operacje"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_schedules
+msgid "Schedules"
+msgstr "Harmonogramy"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_templates
+msgid "Templates"
+msgstr "Szablony"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_config
+msgid "Configuration"
+msgstr "Konfiguracja"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_value_maps
+msgid "Value Maps"
+msgstr "Mapy wartości"
+
+#. module: navigare_migrate
+#: model:ir.ui.menu,name:navigare_migrate.menu_navigare_migrate_dependencies
+msgid "Dependencies"
+msgstr "Zależności"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "Migration Dashboard"
+msgstr "Pulpit migracji"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "Operations Today"
+msgstr "Operacje dzisiaj"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "Success Rate"
+msgstr "Wskaźnik powodzenia"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "Total Processed"
+msgstr "Łącznie przetworzono"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "Active Schedules"
+msgstr "Aktywne harmonogramy"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "Recent Operations"
+msgstr "Ostatnie operacje"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "New Import"
+msgstr "Nowy import"
+
+#. module: navigare_migrate
+#: model:ir.ui.view,arch_db:navigare_migrate.view_migrate_dashboard
+msgid "New Export"
+msgstr "Nowy eksport"

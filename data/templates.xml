@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <!--
+        Pre-built migration templates for common import/export scenarios.
+
+        Templates referencing models from optional modules (sale, purchase,
+        hr, stock, account) require those modules to be installed.  If a
+        referenced ir.model record does not exist the template record will
+        fail to load; install the corresponding module first or remove the
+        record below.
+    -->
+
+    <!-- 1. Contacts / Partners  (base) -->
+    <record id="template_contacts" model="migrate.template">
+        <field name="name">Contacts / Partners</field>
+        <field name="sequence">10</field>
+        <field name="category">initial_setup</field>
+        <field name="description">Import or export contacts, companies, and addresses. Covers the most common partner fields including commercial data (VAT, customer/supplier rank) and address components.</field>
+        <field name="icon">fa fa-users</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="direction">both</field>
+        <field name="format_type">csv</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Name", "field_name": "name", "transform_type": "none", "required": true},
+    {"source_column": "Email", "field_name": "email", "transform_type": "none"},
+    {"source_column": "Phone", "field_name": "phone", "transform_type": "none"},
+    {"source_column": "Mobile", "field_name": "mobile", "transform_type": "none"},
+    {"source_column": "Street", "field_name": "street", "transform_type": "none"},
+    {"source_column": "City", "field_name": "city", "transform_type": "none"},
+    {"source_column": "Zip", "field_name": "zip", "transform_type": "none"},
+    {"source_column": "Country", "field_name": "country_id", "transform_type": "none", "relation_match_field": "name"},
+    {"source_column": "Company Name", "field_name": "company_name", "transform_type": "none"},
+    {"source_column": "VAT", "field_name": "vat", "transform_type": "none"},
+    {"source_column": "Is Company", "field_name": "is_company", "transform_type": "none"},
+    {"source_column": "Customer Rank", "field_name": "customer_rank", "transform_type": "none"},
+    {"source_column": "Supplier Rank", "field_name": "supplier_rank", "transform_type": "none"},
+    {"source_column": "Internal Reference", "field_name": "ref", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "update", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 2. Products  (base — product is part of core) -->
+    <record id="template_products" model="migrate.template">
+        <field name="name">Products</field>
+        <field name="sequence">20</field>
+        <field name="category">initial_setup</field>
+        <field name="description">Import or export product catalogue data. Includes pricing, categorisation, barcode, and physical attributes (weight, volume).</field>
+        <field name="icon">fa fa-cube</field>
+        <field name="model_id" ref="base.model_product_template"/>
+        <field name="direction">both</field>
+        <field name="format_type">xlsx</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Name", "field_name": "name", "transform_type": "none", "required": true},
+    {"source_column": "Internal Reference", "field_name": "default_code", "transform_type": "none"},
+    {"source_column": "Barcode", "field_name": "barcode", "transform_type": "none"},
+    {"source_column": "Sales Price", "field_name": "list_price", "transform_type": "none"},
+    {"source_column": "Cost", "field_name": "standard_price", "transform_type": "none"},
+    {"source_column": "Category", "field_name": "categ_id", "transform_type": "none", "relation_match_field": "complete_name"},
+    {"source_column": "Product Type", "field_name": "type", "transform_type": "none"},
+    {"source_column": "Can be Sold", "field_name": "sale_ok", "transform_type": "none"},
+    {"source_column": "Can be Purchased", "field_name": "purchase_ok", "transform_type": "none"},
+    {"source_column": "Sales Description", "field_name": "description_sale", "transform_type": "none"},
+    {"source_column": "Weight", "field_name": "weight", "transform_type": "none"},
+    {"source_column": "Volume", "field_name": "volume", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "update", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 3. Chart of Accounts  (requires: account) -->
+    <record id="template_chart_of_accounts" model="migrate.template">
+        <field name="name">Chart of Accounts</field>
+        <field name="sequence">30</field>
+        <field name="category">accounting</field>
+        <field name="description">Import your chart of accounts. Maps account code, name, type (account_type in Odoo 19), reconcile flag, and deprecation status.</field>
+        <field name="icon">fa fa-book</field>
+        <field name="model_id" ref="account.model_account_account"/>
+        <field name="direction">import</field>
+        <field name="format_type">csv</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Code", "field_name": "code", "transform_type": "none", "required": true},
+    {"source_column": "Name", "field_name": "name", "transform_type": "none", "required": true},
+    {"source_column": "Account Type", "field_name": "account_type", "transform_type": "none", "required": true},
+    {"source_column": "Allow Reconciliation", "field_name": "reconcile", "transform_type": "none"},
+    {"source_column": "Deprecated", "field_name": "deprecated", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "update", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 4. Journal Entries  (requires: account) -->
+    <record id="template_journal_entries" model="migrate.template">
+        <field name="name">Journal Entries</field>
+        <field name="sequence">40</field>
+        <field name="category">accounting</field>
+        <field name="description">Import journal entries (account.move) with header-level data. Combine with journal item lines for complete postings.</field>
+        <field name="icon">fa fa-file-text-o</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="direction">import</field>
+        <field name="format_type">csv</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Number", "field_name": "name", "transform_type": "none", "required": true},
+    {"source_column": "Date", "field_name": "date", "transform_type": "none", "required": true},
+    {"source_column": "Journal", "field_name": "journal_id", "transform_type": "none", "relation_match_field": "code", "required": true},
+    {"source_column": "Reference", "field_name": "ref", "transform_type": "none"},
+    {"source_column": "Partner", "field_name": "partner_id", "transform_type": "none", "relation_match_field": "name"},
+    {"source_column": "Type", "field_name": "move_type", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 200, "on_existing": "skip", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 5. Sale Orders  (requires: sale) -->
+    <record id="template_sale_orders" model="migrate.template">
+        <field name="name">Sale Orders</field>
+        <field name="sequence">50</field>
+        <field name="category">erp_migration</field>
+        <field name="description">Import sale order headers from a previous ERP. Map customer references, payment terms, and price lists to Odoo sale orders.</field>
+        <field name="icon">fa fa-shopping-cart</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="direction">import</field>
+        <field name="format_type">xlsx</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Order Number", "field_name": "name", "transform_type": "none", "required": true},
+    {"source_column": "Customer", "field_name": "partner_id", "transform_type": "none", "relation_match_field": "name", "required": true},
+    {"source_column": "Order Date", "field_name": "date_order", "transform_type": "none", "required": true},
+    {"source_column": "Customer Reference", "field_name": "client_order_ref", "transform_type": "none"},
+    {"source_column": "Pricelist", "field_name": "pricelist_id", "transform_type": "none", "relation_match_field": "name"},
+    {"source_column": "Payment Terms", "field_name": "payment_term_id", "transform_type": "none", "relation_match_field": "name"},
+    {"source_column": "Note", "field_name": "note", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 200, "on_existing": "skip", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 6. Purchase Orders  (requires: purchase) -->
+    <record id="template_purchase_orders" model="migrate.template">
+        <field name="name">Purchase Orders</field>
+        <field name="sequence">60</field>
+        <field name="category">erp_migration</field>
+        <field name="description">Import purchase order headers from a previous ERP. Maps vendor, dates, and reference fields to Odoo purchase orders.</field>
+        <field name="icon">fa fa-truck</field>
+        <field name="model_id" ref="purchase.model_purchase_order"/>
+        <field name="direction">import</field>
+        <field name="format_type">xlsx</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Order Number", "field_name": "name", "transform_type": "none", "required": true},
+    {"source_column": "Vendor", "field_name": "partner_id", "transform_type": "none", "relation_match_field": "name", "required": true},
+    {"source_column": "Order Date", "field_name": "date_order", "transform_type": "none", "required": true},
+    {"source_column": "Planned Date", "field_name": "date_planned", "transform_type": "none"},
+    {"source_column": "Vendor Reference", "field_name": "partner_ref", "transform_type": "none"},
+    {"source_column": "Notes", "field_name": "notes", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 200, "on_existing": "skip", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 7. Employees  (requires: hr) -->
+    <record id="template_employees" model="migrate.template">
+        <field name="name">Employees</field>
+        <field name="sequence">70</field>
+        <field name="category">hr</field>
+        <field name="description">Import or export employee records. Covers identity, contact, job position, department, and personal details.</field>
+        <field name="icon">fa fa-id-card</field>
+        <field name="model_id" ref="hr.model_hr_employee"/>
+        <field name="direction">both</field>
+        <field name="format_type">csv</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Name", "field_name": "name", "transform_type": "none", "required": true},
+    {"source_column": "Work Email", "field_name": "work_email", "transform_type": "none"},
+    {"source_column": "Work Phone", "field_name": "work_phone", "transform_type": "none"},
+    {"source_column": "Job Title", "field_name": "job_title", "transform_type": "none"},
+    {"source_column": "Department", "field_name": "department_id", "transform_type": "none", "relation_match_field": "name"},
+    {"source_column": "Manager", "field_name": "parent_id", "transform_type": "none", "relation_match_field": "name"},
+    {"source_column": "Identification No", "field_name": "identification_id", "transform_type": "none"},
+    {"source_column": "Gender", "field_name": "gender", "transform_type": "none"},
+    {"source_column": "Date of Birth", "field_name": "birthday", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "update", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 8. Inventory Adjustments  (requires: stock) -->
+    <record id="template_inventory_adjustments" model="migrate.template">
+        <field name="name">Inventory Adjustments</field>
+        <field name="sequence">80</field>
+        <field name="category">inventory</field>
+        <field name="description">Import inventory quantities via stock.quant. Set on-hand stock levels for products in specific locations and lot/serial numbers.</field>
+        <field name="icon">fa fa-cubes</field>
+        <field name="model_id" ref="stock.model_stock_quant"/>
+        <field name="direction">import</field>
+        <field name="format_type">csv</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Product", "field_name": "product_id", "transform_type": "none", "relation_match_field": "default_code", "required": true},
+    {"source_column": "Location", "field_name": "location_id", "transform_type": "none", "relation_match_field": "complete_name", "required": true},
+    {"source_column": "Quantity", "field_name": "inventory_quantity", "transform_type": "none", "required": true},
+    {"source_column": "Lot/Serial Number", "field_name": "lot_id", "transform_type": "none", "relation_match_field": "name"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "update", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 9. Price List Items  (requires: product — core module) -->
+    <record id="template_pricelist_items" model="migrate.template">
+        <field name="name">Price List Items</field>
+        <field name="sequence">90</field>
+        <field name="category">bulk_update</field>
+        <field name="description">Bulk-import price list rules. Map products to pricelists with minimum quantities, fixed prices, date ranges, and computation methods.</field>
+        <field name="icon">fa fa-tags</field>
+        <field name="model_id" ref="product.model_product_pricelist_item"/>
+        <field name="direction">import</field>
+        <field name="format_type">csv</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Pricelist", "field_name": "pricelist_id", "transform_type": "none", "relation_match_field": "name", "required": true},
+    {"source_column": "Product Template", "field_name": "product_tmpl_id", "transform_type": "none", "relation_match_field": "default_code"},
+    {"source_column": "Min. Quantity", "field_name": "min_quantity", "transform_type": "none"},
+    {"source_column": "Fixed Price", "field_name": "fixed_price", "transform_type": "none"},
+    {"source_column": "Start Date", "field_name": "date_start", "transform_type": "none"},
+    {"source_column": "End Date", "field_name": "date_end", "transform_type": "none"},
+    {"source_column": "Computation", "field_name": "compute_price", "transform_type": "none"}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "update", "use_external_ids": true}]]></field>
+    </record>
+
+    <!-- 10. Bank Statement Lines  (requires: account) -->
+    <record id="template_bank_statement_lines" model="migrate.template">
+        <field name="name">Bank Statement Lines</field>
+        <field name="sequence">100</field>
+        <field name="category">accounting</field>
+        <field name="description">Import bank statement lines for reconciliation. Maps transaction date, reference, amount, partner, and journal.</field>
+        <field name="icon">fa fa-university</field>
+        <field name="model_id" ref="account.model_account_bank_statement_line"/>
+        <field name="direction">import</field>
+        <field name="format_type">csv</field>
+        <field name="mapping_data"><![CDATA[[
+    {"source_column": "Date", "field_name": "date", "transform_type": "none", "required": true},
+    {"source_column": "Payment Reference", "field_name": "payment_ref", "transform_type": "none", "required": true},
+    {"source_column": "Amount", "field_name": "amount", "transform_type": "none", "required": true},
+    {"source_column": "Partner", "field_name": "partner_id", "transform_type": "none", "relation_match_field": "name"},
+    {"source_column": "Journal", "field_name": "journal_id", "transform_type": "none", "relation_match_field": "code", "required": true}
+]]]></field>
+        <field name="profile_defaults"><![CDATA[{"csv_delimiter": ",", "csv_encoding": "utf-8", "csv_has_header": true, "batch_size": 500, "on_existing": "skip", "use_external_ids": true}]]></field>
+    </record>
+
+</odoo>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a237e"/>
+      <stop offset="100%" style="stop-color:#00897b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded rectangle -->
+  <rect x="4" y="4" width="120" height="120" rx="20" ry="20" fill="url(#bg)"/>
+
+  <!-- Right-pointing arrow (top) -->
+  <g fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Top arrow: shaft + head, pointing right -->
+    <line x1="30" y1="44" x2="88" y2="44"/>
+    <polyline points="74,32 88,44 74,56"/>
+
+    <!-- Bottom arrow: shaft + head, pointing left -->
+    <line x1="98" y1="68" x2="40" y2="68"/>
+    <polyline points="54,56 40,68 54,80"/>
+  </g>
+
+  <!-- Small document icon (centered below arrows) -->
+  <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M50,86 L50,110 L78,110 L78,93 L71,86 Z"/>
+    <polyline points="71,86 71,93 78,93"/>
+    <!-- Document lines -->
+    <line x1="55" y1="98" x2="73" y2="98"/>
+    <line x1="55" y1="104" x2="68" y2="104"/>
+  </g>
+</svg>

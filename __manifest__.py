@@ -42,6 +42,7 @@ Features:
         # Data
         'data/sequence.xml',
         'data/cron_cleanup.xml',
+        'data/templates.xml',
         # Views & Actions (actions before menus that reference them)
         'views/dashboard_action.xml',
         'views/value_map_views.xml',
