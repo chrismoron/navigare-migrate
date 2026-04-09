@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Form view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_profile_form" model="ir.ui.view">
+        <field name="name">migrate.profile.form</field>
+        <field name="model">migrate.profile</field>
+        <field name="arch" type="xml">
+            <form string="Migration Profile">
+                <header>
+                    <button name="action_run_import" type="object"
+                            string="Run Import" class="btn-primary"
+                            invisible="direction != 'import'"
+                            groups="group_migrate_user"/>
+                    <button name="action_run_export" type="object"
+                            string="Run Export" class="btn-primary"
+                            invisible="direction != 'export'"
+                            groups="group_migrate_user"/>
+                    <button name="action_auto_map_fields" type="object"
+                            string="Auto-Map Fields" class="btn-secondary"
+                            groups="group_migrate_manager"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_operations" type="object"
+                                class="oe_stat_button" icon="fa-history">
+                            <field name="operation_count" widget="statinfo"
+                                   string="Operations"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Profile Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="direction"/>
+                            <field name="format_type"/>
+                            <field name="model_id"/>
+                            <field name="model_name" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="on_existing"/>
+                            <field name="active" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="template_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <!-- Format Options tab -->
+                        <page string="Format Options" name="format_options">
+                            <!-- CSV options -->
+                            <group string="CSV Options"
+                                   invisible="format_type != 'csv'">
+                                <group>
+                                    <field name="csv_delimiter"/>
+                                    <field name="csv_encoding"/>
+                                </group>
+                                <group>
+                                    <field name="csv_quotechar"/>
+                                    <field name="csv_has_header"/>
+                                </group>
+                            </group>
+                            <!-- Excel / ODS options -->
+                            <group string="Spreadsheet Options"
+                                   invisible="format_type not in ('xlsx', 'ods')">
+                                <group>
+                                    <field name="sheet_name"/>
+                                </group>
+                                <group>
+                                    <field name="header_row"/>
+                                    <field name="data_start_row"/>
+                                </group>
+                            </group>
+                            <!-- XML options -->
+                            <group string="XML Options"
+                                   invisible="format_type != 'xml'">
+                                <group>
+                                    <field name="xml_root_element"/>
+                                    <field name="xml_record_element"/>
+                                </group>
+                                <group>
+                                    <field name="xml_use_attributes"/>
+                                </group>
+                            </group>
+                            <!-- JSON options -->
+                            <group string="JSON Options"
+                                   invisible="format_type != 'json'">
+                                <group>
+                                    <field name="json_root_path"/>
+                                </group>
+                                <group>
+                                    <field name="json_flatten_nested"/>
+                                </group>
+                            </group>
+                            <!-- Fixed-width options -->
+                            <group string="Fixed-Width Options"
+                                   invisible="format_type != 'fixed'">
+                                <field name="fixed_width_definition"
+                                       widget="ace"
+                                       options="{'mode': 'json'}"/>
+                            </group>
+                            <!-- SQLite options -->
+                            <group string="SQLite Options"
+                                   invisible="format_type != 'sqlite'">
+                                <group>
+                                    <field name="sqlite_table_name"/>
+                                </group>
+                            </group>
+                        </page>
+                        <!-- Field Mappings tab -->
+                        <page string="Field Mappings" name="field_mappings">
+                            <field name="field_mapping_ids">
+                                <list editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="source_column"/>
+                                    <field name="field_id"
+                                           domain="[('model_id', '=', parent.model_id)]"/>
+                                    <field name="field_name" column_invisible="1"/>
+                                    <field name="field_type" column_invisible="1"/>
+                                    <field name="transform_type"/>
+                                    <field name="default_value" optional="hide"/>
+                                    <field name="relation_match_field" optional="hide"/>
+                                    <field name="required"/>
+                                    <field name="active"/>
+                                </list>
+                            </field>
+                        </page>
+                        <!-- Behaviour tab -->
+                        <page string="Behaviour" name="behaviour">
+                            <group>
+                                <group>
+                                    <field name="batch_size"/>
+                                    <field name="use_external_ids"/>
+                                    <field name="external_id_prefix"
+                                           invisible="not use_external_ids"/>
+                                </group>
+                                <group>
+                                    <field name="match_field_ids" widget="many2many_tags"
+                                           domain="[('model_id', '=', model_id)]"/>
+                                </group>
+                            </group>
+                        </page>
+                        <!-- Notes tab -->
+                        <page string="Notes" name="notes">
+                            <field name="notes" placeholder="Internal notes..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- List view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_profile_list" model="ir.ui.view">
+        <field name="name">migrate.profile.list</field>
+        <field name="model">migrate.profile</field>
+        <field name="arch" type="xml">
+            <list string="Migration Profiles">
+                <field name="name"/>
+                <field name="direction" widget="badge"
+                       decoration-info="direction == 'import'"
+                       decoration-success="direction == 'export'"/>
+                <field name="format_type"/>
+                <field name="model_name"/>
+                <field name="operation_count"/>
+                <field name="last_operation_date"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Search view                                                   -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_profile_search" model="ir.ui.view">
+        <field name="name">migrate.profile.search</field>
+        <field name="model">migrate.profile</field>
+        <field name="arch" type="xml">
+            <search string="Search Profiles">
+                <field name="name"/>
+                <field name="model_name"/>
+                <filter name="filter_import" string="Import"
+                        domain="[('direction', '=', 'import')]"/>
+                <filter name="filter_export" string="Export"
+                        domain="[('direction', '=', 'export')]"/>
+                <separator/>
+                <filter name="filter_active" string="Active"
+                        domain="[('active', '=', True)]"/>
+                <filter name="filter_archived" string="Archived"
+                        domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_direction" string="Direction"
+                            context="{'group_by': 'direction'}"/>
+                    <filter name="groupby_format" string="Format"
+                            context="{'group_by': 'format_type'}"/>
+                    <filter name="groupby_model" string="Model"
+                            context="{'group_by': 'model_name'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

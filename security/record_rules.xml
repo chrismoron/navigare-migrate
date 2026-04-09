@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Multi-company: profiles -->
+    <record id="rule_migrate_profile_company" model="ir.rule">
+        <field name="name">Migrate Profile: multi-company</field>
+        <field name="model_id" ref="model_migrate_profile"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_migrate_user'))]"/>
+    </record>
+
+    <!-- Multi-company: operations -->
+    <record id="rule_migrate_operation_company" model="ir.rule">
+        <field name="name">Migrate Operation: multi-company</field>
+        <field name="model_id" ref="model_migrate_operation"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_migrate_user'))]"/>
+    </record>
+
+    <!-- Multi-company: schedules -->
+    <record id="rule_migrate_schedule_company" model="ir.rule">
+        <field name="name">Migrate Schedule: multi-company</field>
+        <field name="model_id" ref="model_migrate_schedule"/>
+        <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+        <field name="groups" eval="[(4, ref('group_migrate_manager'))]"/>
+    </record>
+
+    <!-- Admin sees all: profiles -->
+    <record id="rule_migrate_profile_admin" model="ir.rule">
+        <field name="name">Migrate Profile: admin sees all</field>
+        <field name="model_id" ref="model_migrate_profile"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+    </record>
+
+    <!-- Admin sees all: operations -->
+    <record id="rule_migrate_operation_admin" model="ir.rule">
+        <field name="name">Migrate Operation: admin sees all</field>
+        <field name="model_id" ref="model_migrate_operation"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+    </record>
+
+    <!-- Admin sees all: schedules -->
+    <record id="rule_migrate_schedule_admin" model="ir.rule">
+        <field name="name">Migrate Schedule: admin sees all</field>
+        <field name="model_id" ref="model_migrate_schedule"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+    </record>
+
+</odoo>

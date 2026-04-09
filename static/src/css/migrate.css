@@ -1,0 +1,112 @@
+/* Navigare Migrate - Dashboard & component styles */
+
+/* Dashboard layout */
+.navigare_migrate_dashboard {
+    background-color: #f8f9fa;
+    min-height: 100%;
+    padding-bottom: 2rem;
+}
+
+/* Stat cards */
+.migrate_stat_card {
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.migrate_stat_card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.migrate_stat_icon {
+    opacity: 0.85;
+}
+
+.migrate_stat_value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #212529;
+}
+
+/* Recent operations table */
+.navigare_migrate_dashboard .table th {
+    border-top: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #6c757d;
+    letter-spacing: 0.03em;
+}
+
+.navigare_migrate_dashboard .table td {
+    vertical-align: middle;
+}
+
+.navigare_migrate_dashboard .cursor-pointer {
+    cursor: pointer;
+}
+
+.navigare_migrate_dashboard .cursor-pointer:hover {
+    background-color: rgba(0, 123, 255, 0.04);
+}
+
+/* State badges */
+.navigare_migrate_dashboard .badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Progress bar widget */
+.o_migrate_progress .progress {
+    height: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: #e9ecef;
+}
+
+.o_migrate_progress .progress-bar {
+    transition: width 0.6s ease;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Stat buttons in form views */
+.o_form_view .oe_stat_button .o_stat_value {
+    font-size: 1.5rem;
+}
+
+/* Import/Export wizard */
+.o_migrate_wizard_preview table {
+    font-size: 0.85rem;
+}
+
+.o_migrate_wizard_preview th {
+    background-color: #f0f3f5;
+    font-weight: 600;
+}
+
+/* Profile form - mapping table */
+.o_field_one2many .o_list_view .o_handle_cell {
+    cursor: grab;
+}
+
+/* Operation log */
+.o_field_text[name="log_text"] textarea {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.8rem;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border-radius: 0.375rem;
+    min-height: 300px;
+}
+
+/* Kanban template cards */
+.o_kanban_view .o_kanban_record .migrate_template_card {
+    border-radius: 0.75rem;
+    transition: box-shadow 0.2s ease;
+}
+
+.o_kanban_view .o_kanban_record .migrate_template_card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

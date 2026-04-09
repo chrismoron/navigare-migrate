@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Kanban view                                                   -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_template_kanban" model="ir.ui.view">
+        <field name="name">migrate.template.kanban</field>
+        <field name="model">migrate.template</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1">
+                <field name="name"/>
+                <field name="category"/>
+                <field name="description"/>
+                <field name="icon"/>
+                <field name="model_id"/>
+                <field name="direction"/>
+                <field name="format_type"/>
+                <templates>
+                    <t t-name="card">
+                        <div class="d-flex align-items-start mb-2">
+                            <i t-att-class="record.icon.value + ' fa-2x me-3 text-primary'"
+                               t-if="record.icon.value"/>
+                            <div class="flex-grow-1">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                                <div class="mt-1">
+                                    <span class="badge rounded-pill text-bg-info me-1">
+                                        <field name="category"/>
+                                    </span>
+                                    <span class="badge rounded-pill text-bg-secondary">
+                                        <field name="direction"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-muted small mb-2" t-if="record.description.value">
+                            <field name="description"/>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="text-muted small">
+                                <field name="model_id"/>
+                            </span>
+                            <button name="action_create_profile" type="object"
+                                    class="btn btn-sm btn-primary"
+                                    string="Use Template"/>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- List view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_template_list" model="ir.ui.view">
+        <field name="name">migrate.template.list</field>
+        <field name="model">migrate.template</field>
+        <field name="arch" type="xml">
+            <list string="Migration Templates">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="category" widget="badge"/>
+                <field name="model_id"/>
+                <field name="direction"/>
+                <field name="format_type"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Form view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_template_form" model="ir.ui.view">
+        <field name="name">migrate.template.form</field>
+        <field name="model">migrate.template</field>
+        <field name="arch" type="xml">
+            <form string="Migration Template">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Template Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="category"/>
+                            <field name="model_id"/>
+                            <field name="direction"/>
+                            <field name="format_type"/>
+                        </group>
+                        <group>
+                            <field name="icon"/>
+                            <field name="sequence"/>
+                            <field name="sample_file" filename="sample_filename"/>
+                            <field name="sample_filename" invisible="1"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"
+                               placeholder="Describe this template..."/>
+                    </group>
+                    <notebook>
+                        <page string="Mapping Data" name="mapping_data">
+                            <field name="mapping_data" widget="ace"
+                                   options="{'mode': 'json'}"
+                                   placeholder='[{"source_column": "Name", "field_name": "name"}]'/>
+                        </page>
+                        <page string="Profile Defaults" name="profile_defaults">
+                            <field name="profile_defaults" widget="ace"
+                                   options="{'mode': 'json'}"
+                                   placeholder='{"csv_delimiter": ";", "batch_size": 1000}'/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Search view                                                   -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_template_search" model="ir.ui.view">
+        <field name="name">migrate.template.search</field>
+        <field name="model">migrate.template</field>
+        <field name="arch" type="xml">
+            <search string="Search Templates">
+                <field name="name"/>
+                <field name="model_id"/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_category" string="Category"
+                            context="{'group_by': 'category'}"/>
+                    <filter name="groupby_direction" string="Direction"
+                            context="{'group_by': 'direction'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

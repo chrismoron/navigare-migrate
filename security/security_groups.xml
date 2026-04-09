@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Module category -->
+    <record id="module_category_navigare_migrate" model="ir.module.category">
+        <field name="name">Navigare Migrate</field>
+        <field name="description">Mass data import/export toolkit for Odoo.</field>
+        <field name="sequence">200</field>
+    </record>
+
+    <!-- User group: read access to profiles, operations -->
+    <record id="group_migrate_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_navigare_migrate"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="comment">Read access to migration profiles and operations.</field>
+    </record>
+
+    <!-- Manager group: full CRUD -->
+    <record id="group_migrate_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_category_navigare_migrate"/>
+        <field name="implied_ids" eval="[(4, ref('group_migrate_user'))]"/>
+        <field name="comment">Full access to all migration features.</field>
+    </record>
+
+</odoo>

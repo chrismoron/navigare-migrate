@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="navigare_migrate.Dashboard">
+        <div class="o_action navigare_migrate_dashboard">
+            <!-- Loading spinner -->
+            <div t-if="state.loading" class="text-center py-5">
+                <i class="fa fa-spinner fa-spin fa-3x"/>
+                <p class="mt-3 text-muted">Loading dashboard...</p>
+            </div>
+
+            <div t-else="">
+                <!-- Header -->
+                <div class="d-flex justify-content-between align-items-center mb-4 px-3 pt-3">
+                    <h2 class="mb-0">Migration Dashboard</h2>
+                    <div>
+                        <button class="btn btn-primary me-2"
+                                t-on-click="openImportWizard">
+                            <i class="fa fa-upload me-1"/> New Import
+                        </button>
+                        <button class="btn btn-outline-primary"
+                                t-on-click="openExportWizard">
+                            <i class="fa fa-download me-1"/> New Export
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stat cards -->
+                <div class="row g-3 px-3 mb-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card migrate_stat_card h-100">
+                            <div class="card-body text-center">
+                                <div class="migrate_stat_icon text-primary mb-2">
+                                    <i class="fa fa-calendar-check-o fa-2x"/>
+                                </div>
+                                <h3 class="migrate_stat_value mb-1">
+                                    <t t-esc="formatNumber(state.operationsToday)"/>
+                                </h3>
+                                <p class="text-muted mb-0">Operations Today</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card migrate_stat_card h-100">
+                            <div class="card-body text-center">
+                                <div class="migrate_stat_icon text-success mb-2">
+                                    <i class="fa fa-check-circle fa-2x"/>
+                                </div>
+                                <h3 class="migrate_stat_value mb-1">
+                                    <t t-esc="state.successRate"/>%
+                                </h3>
+                                <p class="text-muted mb-0">Success Rate (30d)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card migrate_stat_card h-100">
+                            <div class="card-body text-center">
+                                <div class="migrate_stat_icon text-info mb-2">
+                                    <i class="fa fa-database fa-2x"/>
+                                </div>
+                                <h3 class="migrate_stat_value mb-1">
+                                    <t t-esc="formatNumber(state.totalProcessed)"/>
+                                </h3>
+                                <p class="text-muted mb-0">Records Processed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card migrate_stat_card h-100">
+                            <div class="card-body text-center">
+                                <div class="migrate_stat_icon text-warning mb-2">
+                                    <i class="fa fa-clock-o fa-2x"/>
+                                </div>
+                                <h3 class="migrate_stat_value mb-1">
+                                    <t t-esc="formatNumber(state.activeSchedules)"/>
+                                </h3>
+                                <p class="text-muted mb-0">Active Schedules</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent operations table -->
+                <div class="px-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Recent Operations</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div t-if="!state.recentOperations.length"
+                                 class="text-center text-muted py-4">
+                                No operations yet.
+                            </div>
+                            <table t-else=""
+                                   class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Reference</th>
+                                        <th>Profile</th>
+                                        <th>Direction</th>
+                                        <th>Status</th>
+                                        <th class="text-end">Total</th>
+                                        <th class="text-end">Created</th>
+                                        <th class="text-end">Errors</th>
+                                        <th>Duration</th>
+                                        <th>User</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="state.recentOperations"
+                                        t-as="op" t-key="op.id"
+                                        class="cursor-pointer"
+                                        t-on-click="() => this.openOperation(op.id)">
+                                        <td>
+                                            <strong t-esc="op.name"/>
+                                        </td>
+                                        <td t-esc="op.profile_name"/>
+                                        <td>
+                                            <span class="badge"
+                                                  t-att-class="op.direction === 'import' ? 'text-bg-info' : 'text-bg-success'">
+                                                <t t-esc="op.direction"/>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge"
+                                                  t-att-class="getStateBadgeClass(op.state)">
+                                                <t t-esc="op.state"/>
+                                            </span>
+                                        </td>
+                                        <td class="text-end"
+                                            t-esc="formatNumber(op.total_rows)"/>
+                                        <td class="text-end"
+                                            t-esc="formatNumber(op.created_count)"/>
+                                        <td class="text-end"
+                                            t-esc="formatNumber(op.error_count)"/>
+                                        <td t-esc="formatDuration(op.duration)"/>
+                                        <td t-esc="op.user_name"/>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

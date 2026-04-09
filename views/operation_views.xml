@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Form view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_operation_form" model="ir.ui.view">
+        <field name="name">migrate.operation.form</field>
+        <field name="model">migrate.operation</field>
+        <field name="arch" type="xml">
+            <form string="Migration Operation" create="false">
+                <header>
+                    <button name="action_rollback" type="object"
+                            string="Rollback" class="btn-danger"
+                            invisible="not can_rollback or rollback_done"
+                            confirm="This will permanently delete all records created by this operation. Continue?"
+                            groups="group_migrate_manager"/>
+                    <button name="action_retry_errors" type="object"
+                            string="Retry Errors" class="btn-warning"
+                            invisible="error_count == 0"
+                            groups="group_migrate_manager"/>
+                    <button name="action_download_errors" type="object"
+                            string="Download Errors" class="btn-secondary"
+                            invisible="error_count == 0"
+                            groups="group_migrate_user"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,running,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <div class="oe_stat_button" icon="fa-list">
+                            <field name="total_rows" widget="statinfo"
+                                   string="Total"/>
+                        </div>
+                        <div class="oe_stat_button" icon="fa-plus-circle">
+                            <field name="created_count" widget="statinfo"
+                                   string="Created"/>
+                        </div>
+                        <div class="oe_stat_button" icon="fa-pencil">
+                            <field name="updated_count" widget="statinfo"
+                                   string="Updated"/>
+                        </div>
+                        <div class="oe_stat_button" icon="fa-forward">
+                            <field name="skipped_count" widget="statinfo"
+                                   string="Skipped"/>
+                        </div>
+                        <div class="oe_stat_button" icon="fa-exclamation-triangle">
+                            <field name="error_count" widget="statinfo"
+                                   string="Errors"/>
+                        </div>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="profile_id"/>
+                            <field name="direction"/>
+                            <field name="model_name"/>
+                            <field name="format_type"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="duration" widget="float_time"/>
+                            <field name="is_dry_run"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="progress" widget="progressbar"/>
+                    </group>
+                    <notebook>
+                        <page string="Log" name="log">
+                            <field name="log_text" readonly="1"
+                                   widget="text" nolabel="1"/>
+                        </page>
+                        <page string="Error Details" name="errors">
+                            <field name="line_ids" readonly="1">
+                                <list>
+                                    <field name="row_number"/>
+                                    <field name="state" widget="badge"
+                                           decoration-danger="state == 'error'"
+                                           decoration-success="state == 'created'"
+                                           decoration-info="state == 'updated'"
+                                           decoration-muted="state == 'skipped'"/>
+                                    <field name="error_message"/>
+                                    <field name="record_ref" optional="hide"/>
+                                    <field name="source_data" optional="hide"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Files" name="files">
+                            <group>
+                                <field name="source_file" filename="source_filename"/>
+                                <field name="source_filename" invisible="1"/>
+                                <field name="result_file" filename="result_filename"/>
+                                <field name="result_filename" invisible="1"/>
+                                <field name="error_file" filename="error_filename"/>
+                                <field name="error_filename" invisible="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                    <field name="can_rollback" invisible="1"/>
+                    <field name="rollback_done" invisible="1"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- List view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_operation_list" model="ir.ui.view">
+        <field name="name">migrate.operation.list</field>
+        <field name="model">migrate.operation</field>
+        <field name="arch" type="xml">
+            <list string="Migration Operations" create="false"
+                  decoration-danger="state == 'error'"
+                  decoration-warning="state == 'partial'"
+                  decoration-muted="state in ('cancelled', 'dry_run')">
+                <field name="name"/>
+                <field name="profile_id"/>
+                <field name="direction" widget="badge"
+                       decoration-info="direction == 'import'"
+                       decoration-success="direction == 'export'"/>
+                <field name="state" widget="badge"
+                       decoration-success="state == 'done'"
+                       decoration-danger="state == 'error'"
+                       decoration-warning="state in ('partial', 'running')"
+                       decoration-info="state == 'dry_run'"
+                       decoration-muted="state in ('draft', 'cancelled')"/>
+                <field name="total_rows"/>
+                <field name="created_count"/>
+                <field name="error_count"/>
+                <field name="date_start"/>
+                <field name="duration" widget="float_time"/>
+                <field name="user_id" widget="many2one_avatar_user"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- Search view                                                   -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_operation_search" model="ir.ui.view">
+        <field name="name">migrate.operation.search</field>
+        <field name="model">migrate.operation</field>
+        <field name="arch" type="xml">
+            <search string="Search Operations">
+                <field name="name"/>
+                <field name="profile_id"/>
+                <field name="model_name"/>
+                <filter name="filter_import" string="Import"
+                        domain="[('direction', '=', 'import')]"/>
+                <filter name="filter_export" string="Export"
+                        domain="[('direction', '=', 'export')]"/>
+                <separator/>
+                <filter name="filter_done" string="Completed"
+                        domain="[('state', '=', 'done')]"/>
+                <filter name="filter_error" string="Errors"
+                        domain="[('state', 'in', ('error', 'partial'))]"/>
+                <filter name="filter_today" string="Today"
+                        domain="[('date_start', '>=', (context_today()).strftime('%%Y-%%m-%%d'))]"/>
+                <group expand="0" string="Group By">
+                    <filter name="groupby_profile" string="Profile"
+                            context="{'group_by': 'profile_id'}"/>
+                    <filter name="groupby_state" string="Status"
+                            context="{'group_by': 'state'}"/>
+                    <filter name="groupby_user" string="User"
+                            context="{'group_by': 'user_id'}"/>
+                    <filter name="groupby_date" string="Date"
+                            context="{'group_by': 'date_start:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

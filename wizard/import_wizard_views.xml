@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_migrate_import_wizard_form" model="ir.ui.view">
+        <field name="name">migrate.import.wizard.form</field>
+        <field name="model">migrate.import.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Data">
+                <field name="state" invisible="1"/>
+
+                <!-- ===== UPLOAD state ===== -->
+                <group invisible="state != 'upload'">
+                    <group string="Profile">
+                        <field name="profile_id"/>
+                        <field name="create_new_profile"/>
+                        <field name="model_id"
+                               invisible="not create_new_profile"/>
+                        <field name="format_type"
+                               invisible="not create_new_profile"/>
+                    </group>
+                    <group string="File">
+                        <field name="file_data" filename="file_name"/>
+                        <field name="file_name" invisible="1"/>
+                    </group>
+                </group>
+                <footer invisible="state != 'upload'">
+                    <button name="action_upload" type="object"
+                            string="Upload &amp; Preview"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+
+                <!-- ===== PREVIEW state ===== -->
+                <group invisible="state != 'preview'">
+                    <group string="Detected Columns">
+                        <field name="detected_columns" nolabel="1" readonly="1"/>
+                    </group>
+                    <group string="Preview">
+                        <field name="preview_html" nolabel="1" readonly="1"/>
+                    </group>
+                    <group string="Options">
+                        <field name="is_dry_run"/>
+                        <field name="batch_size"/>
+                    </group>
+                </group>
+                <footer invisible="state != 'preview'">
+                    <button name="action_run" type="object"
+                            string="Run Import"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+
+                <!-- ===== RUNNING state ===== -->
+                <group invisible="state != 'running'">
+                    <div class="text-center py-4">
+                        <i class="fa fa-spinner fa-spin fa-3x mb-3"/>
+                        <h4>Import in progress...</h4>
+                        <p class="text-muted">Please wait while your data is being processed.</p>
+                    </div>
+                </group>
+
+                <!-- ===== DONE state ===== -->
+                <group invisible="state != 'done'">
+                    <field name="result_html" nolabel="1" readonly="1"/>
+                </group>
+                <footer invisible="state != 'done'">
+                    <button name="action_open_operation" type="object"
+                            string="Open Operation"
+                            class="btn-primary"/>
+                    <button string="Close" class="btn-secondary"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_import_wizard" model="ir.actions.act_window">
+        <field name="name">Import Data</field>
+        <field name="res_model">migrate.import.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

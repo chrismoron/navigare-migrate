@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================================ -->
+    <!-- Form view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_value_map_form" model="ir.ui.view">
+        <field name="name">migrate.value.map.form</field>
+        <field name="model">migrate.value.map</field>
+        <field name="arch" type="xml">
+            <form string="Value Map">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Value Map Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="default_value"/>
+                            <field name="case_sensitive"/>
+                        </group>
+                        <group>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <field name="line_ids">
+                        <list editable="bottom">
+                            <field name="sequence" widget="handle"/>
+                            <field name="source_value"/>
+                            <field name="target_value"/>
+                        </list>
+                    </field>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ============================================================ -->
+    <!-- List view                                                     -->
+    <!-- ============================================================ -->
+    <record id="view_migrate_value_map_list" model="ir.ui.view">
+        <field name="name">migrate.value.map.list</field>
+        <field name="model">migrate.value.map</field>
+        <field name="arch" type="xml">
+            <list string="Value Maps">
+                <field name="name"/>
+                <field name="default_value"/>
+                <field name="case_sensitive"/>
+                <field name="company_id" groups="base.group_multi_company"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>
