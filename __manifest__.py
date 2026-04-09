@@ -42,14 +42,15 @@ Features:
         # Data
         'data/sequence.xml',
         'data/cron_cleanup.xml',
-        # Views & Menus
-        'views/migrate_menus.xml',
+        # Views & Actions (actions before menus that reference them)
+        'views/dashboard_action.xml',
         'views/value_map_views.xml',
         'views/profile_views.xml',
         'views/operation_views.xml',
         'views/schedule_views.xml',
         'views/template_views.xml',
-        'views/dashboard_action.xml',
+        # Menus (after all actions are defined)
+        'views/migrate_menus.xml',
         # Wizards
         'wizard/import_wizard_views.xml',
         'wizard/export_wizard_views.xml',

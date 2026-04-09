@@ -165,16 +165,15 @@
                         domain="[('state', 'in', ('error', 'partial'))]"/>
                 <filter name="filter_today" string="Today"
                         domain="[('date_start', '>=', (context_today()).strftime('%%Y-%%m-%%d'))]"/>
-                <group expand="0" string="Group By">
-                    <filter name="groupby_profile" string="Profile"
-                            context="{'group_by': 'profile_id'}"/>
-                    <filter name="groupby_state" string="Status"
-                            context="{'group_by': 'state'}"/>
-                    <filter name="groupby_user" string="User"
-                            context="{'group_by': 'user_id'}"/>
-                    <filter name="groupby_date" string="Date"
-                            context="{'group_by': 'date_start:day'}"/>
-                </group>
+                <separator/>
+                <filter name="groupby_profile" string="Profile"
+                        domain="[]" context="{'group_by': 'profile_id'}"/>
+                <filter name="groupby_state" string="Status"
+                        domain="[]" context="{'group_by': 'state'}"/>
+                <filter name="groupby_user" string="User"
+                        domain="[]" context="{'group_by': 'user_id'}"/>
+                <filter name="groupby_date" string="Date"
+                        domain="[]" context="{'group_by': 'date_start:day'}"/>
             </search>
         </field>
     </record>

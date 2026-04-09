@@ -129,12 +129,11 @@
             <search string="Search Templates">
                 <field name="name"/>
                 <field name="model_id"/>
-                <group expand="0" string="Group By">
-                    <filter name="groupby_category" string="Category"
-                            context="{'group_by': 'category'}"/>
-                    <filter name="groupby_direction" string="Direction"
-                            context="{'group_by': 'direction'}"/>
-                </group>
+                <separator/>
+                <filter name="groupby_category" string="Category"
+                        domain="[]" context="{'group_by': 'category'}"/>
+                <filter name="groupby_direction" string="Direction"
+                        domain="[]" context="{'group_by': 'direction'}"/>
             </search>
         </field>
     </record>
